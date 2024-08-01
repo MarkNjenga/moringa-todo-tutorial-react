@@ -30,31 +30,62 @@ const TodoList = () => {
       description: 'lorem ipsum lorem',
       isComplete: true,
     },
+    {
+      id: 5,
+      title: 'todo five',
+      description: 'lorem ipsum lorem',
+      isComplete: false,
+    },
+    {
+      id: 6,
+      title: 'todo six',
+      description: 'lorem ipsum lorem',
+      isComplete: true,
+    },
   ];
 
-  // handling JS outside our elements
-  const todoitemsToRender = () => todos.map((todo) => {
-    return (
-      <TodoItem
-        key={todo.id}
-        title={todo.title}
-        description={todo.description}
-        isComplete={todo.isComplete}
-      />
-    );
-  });
-
+  // // handling JS outside our elements
+  // const todoitemsToRender = () => todos.map((todo) => {
+  //   return (
+  //     <TodoItem
+  //       key={todo.id}
+  //       title={todo.title}
+  //       description={todo.description}
+  //       isComplete={todo.isComplete}
+  //     />
+  //   );
+  // });
+// Render completed items:
+let todoitemsToRender = todos.filter((todo) => todo.isComplete).map((todo
+  ) => (
+    <TodoItem
+    key={todo.id}
+    title={todo.title}
+    description={todo.description}
+    isComplete={todo.isComplete}
+    />
+  ))
+  // Render incomplete items:
+  let todoitemsToRenderIncomplete = todos.filter((todo) => !todo.isComplete).map
+  ((todo) => (
+    <TodoItem
+    key={todo.id}
+    title={todo.title}
+    description={todo.description}
+    isComplete={todo.isComplete}
+    />
+  ))
   return (
     <div id='todolist'>
       <h1>Todo List Container</h1>
       <div>
         <h3>Completed Tasks</h3>
-        {/* {todoitemsToRender} */}
+        {todoitemsToRender}
       </div>
       <div>
         <h3>Incomplete Tasks</h3>
       </div>
-      {/* {todoitemsToRender} */}
+      {todoitemsToRenderIncomplete}
 
       {/* when handling JS inside our elements */}
       {/* <>
